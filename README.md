@@ -168,7 +168,7 @@ O Kafka funciona como um **log distribuído**.
 | Consumer Group | Grupo de consumidores compartilhando carga |
 | Offset         | Identificador da posição da mensagem       |
 
-#### 1. Producer (Produtor)
+### 1️⃣ Producer (Produtor)
 
 O **produtor** é o componente responsável por se comunicar com o **cluster do Apache Kafka** e **publicar mensagens em um tópico**. Ele decide para qual tópico enviar e, em muitos casos, também define a chave da mensagem, que influencia em qual partição ela será gravada.
 
@@ -184,7 +184,7 @@ Sendo assim, a principal responsabilidade do produtor é **garantir que a mensag
 - Quem envia mensagens
 - Ex: API, sistema de pagamento, sensores
 
-#### 2. Consumer (Consumidor)
+### 2️⃣ Consumer (Consumidor)
 O **consumidor** é o responsável por **ler as mensagens** de um tópico ou vários tópicos no **Apache Kafka**.
 
 <img src="docs/img/consumidor.png">
@@ -208,7 +208,7 @@ Essas informações são essenciais para controle de processamento, pois permite
 - Quem lê/processa mensagens
 - Pode haver vários consumidores lendo o mesmo dado
 
-#### 3. Topic
+### 3️⃣ Topic
 
 Um **tópico** basicamente é uma forma de gerenciar um grupo de mensagens dentro do **Apache Kafka**, dessa forma a gente sabe onde devemos publicar uma mensagem e de onde é possível consumir também.
 
@@ -228,7 +228,7 @@ Esse condomínio tem **vários blocos de apartamentos**, e cada bloco representa
 <img src="docs/img/topico-2.png">
 
 
-#### 4. Partition
+### 4️⃣ Partition
 Cada tópico é formado pelo menos uma **partição** podendo existir **N** partições.
 
 <img src="docs/img/particao.png">
@@ -256,7 +256,7 @@ Em resumo, as partições funcionam como múltiplos elevadores em um prédio: qu
 
 <img src="docs/img/particao-2.png">
 
-#### 5. Offset
+### 5️⃣ Offset
 Todas as mensagens que chegam no Apache Kafka são armazenadas em uma partição, mas dentro da partição existem os **offsets** que é a **posição da mensagem armazenada fisicamente**.
 
 <img src="docs/img/offsets.png">
@@ -292,7 +292,7 @@ Para fechar o entendimento do que é um **tópico no Apache Kafka**, pense no co
 
 <img src="docs/img/anatomia-de-um-topico.png">
 
-#### 6. Broker
+### 6️⃣ Broker
 Um **broker** é basicamente um **servidor Kafka**.
 
 <img src="docs/img/broker.png">
@@ -324,7 +324,7 @@ Para cada partição:
 - Servidor Kafka que armazena dados
 - Um cluster Kafka tem vários brokers
 
-#### 7. Cluster
+### 7️⃣ Cluster
 Um **cluster Kafka** é o **conjunto de vários brokers trabalhando juntos**.
 
 <img src="docs/img/cluster.png">
@@ -355,7 +355,7 @@ O cluster é responsável por:
 - Conjunto de brokers trabalhando juntos
 - Garante alta disponibilidade
 
-#### 8. Consumer Group
+### 8️⃣ Consumer Group
 Quando você sobe uma instância de consumidor no Apache Kafka, pode informar a qual **consumer group** ela pertence. Esse grupo funciona como um time: todos os consumidores que fazem parte dele **dividem o trabalho de ler as mensagens de um tópico**.
 
 <img src="docs/img/grupo-de-consumidores.png">
@@ -397,7 +397,7 @@ No fim das contas, os **consumer groups permitem escalar o consumo de forma cont
 - Cada partição é consumida por apenas um consumidor do grupo
 - Isso permite escalar processamento
 
-#### 9. ZooKeeper (legado) / KRaft (novo)
+### 9️⃣ ZooKeeper (legado) / KRaft (novo)
 **Zookeeper** é um software desenvolvido pela Apache e funciona como um **serviço centralizado** onde **mantém as configurações e estado dos servidores**, em nosso caso de um **Cluster do Apache kafka**.
 
 <img src="docs/img/apache-zookeeper.png">
@@ -426,11 +426,11 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
 - Gerencia o cluster (eleições, metadata)
 - Hoje o Kafka está migrando para o modo KRaft (sem ZooKeeper)
 
-### ⚔️ Kafka vs RabbitMQ
+## ⚔️ Kafka vs RabbitMQ
 
 <img src="docs/img/kafka-vs-rabbitmq.png">
 
-#### 🔄 Reprocessamento
+### 🔄 Reprocessamento
 - **Kafka**
     - Mantém as mensagens por um tempo configurável
     - Permite reler eventos antigos a qualquer momento
@@ -441,7 +441,7 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
 
 👉 Kafka ganha com folga aqui
 
-#### ⚡ Throughput (volume de dados)
+### ⚡ Throughput (volume de dados)
 - **Kafka**
     - Altíssimo throughput (milhões de mensagens/segundo)
     - Projetado para big data e streaming
@@ -451,7 +451,7 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
 
 👉 Kafka é mais indicado para alto volume
 
-#### 🌊 Streaming de dados
+### 🌊 Streaming de dados
 - **Kafka**
     - Nativo para streaming
     - Trabalha como um log de eventos contínuo
@@ -462,7 +462,7 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
 
 👉 Kafka é feito para isso
 
-#### 🧠 Modelo de consumo
+### 🧠 Modelo de consumo
 - **Kafka (pull)**
     - Consumidor busca mensagens
     - Mais controle sobre ritmo e reprocessamento
@@ -470,7 +470,7 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
     - Broker envia mensagens para consumidores
     - Menor latência em cenários simples
 
-#### 🧾 Garantia de entrega
+### 🧾 Garantia de entrega
 - **Kafka**
     - At-least-once (padrão)
     - Exactly-once (mais avançado, com configuração)
@@ -480,13 +480,13 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
 
 👉 Ambos são confiáveis, mas Kafka é mais forte em consistência distribuída
 
-#### 🧩 Ordenação
+### 🧩 Ordenação
 - **Kafka**
     - Garantida dentro da partição
 - **RabbitMQ**
     - Pode manter ordem na fila, mas com paralelismo isso pode se perder
 
-#### 🏗️ Arquitetura
+### 🏗️ Arquitetura
 - **Kafka**
     - Log distribuído
     - Baseado em partições
@@ -497,7 +497,7 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
 
 👉 RabbitMQ ganha em flexibilidade de roteamento
 
-#### 🧠 Complexidade
+### 🧠 Complexidade
 - **Kafka**
     - Mais complexo de operar
     - Exige entendimento de partições, offsets, retenção
@@ -505,7 +505,7 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
     - Mais simples de começar
     - Curva de aprendizado menor
 
-#### 🏆 Reputação / uso no mercado
+### 🏆 Reputação / uso no mercado
 - **Kafka**
     - Muito usado em:
         - Big techs
@@ -520,7 +520,7 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
 
 👉 Ambos são maduros e amplamente usados
 
-#### ⏱️ Latência
+### ⏱️ Latência
 - **Kafka**
     - Levemente maior (batch + pull)
 - **RabbitMQ**
@@ -528,13 +528,13 @@ Basicamente esse novo líder controlador vai armazenar as configurações que ba
 
 👉 RabbitMQ pode ser melhor para respostas rápidas
 
-#### 📦 Persistência
+### 📦 Persistência
 - **Kafka**
     - Persistência forte por padrão
 - **RabbitMQ**
     - Persistência opcional (pode ser configurada)
 
-#### 🧠 Quando usar cada um
+### 🧠 Quando usar cada um
 #### Use Kafka quando:
 - Precisa de streaming de dados
 - Alto volume (big data)
